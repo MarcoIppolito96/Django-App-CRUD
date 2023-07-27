@@ -1,0 +1,39 @@
+{% extends 'base.html' %} <!--Esto es decir que base es la pagina BASE/COMUN de todas-->
+
+{% block content %}
+
+<main class="conteiner">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+           <h1 class="text-center text-secondary">{{task.titulo}}</h1>
+           <form method="POST">
+            {% csrf_token %}
+            {{form}}
+            <button class="btn btn-primary mt-2 ml-2">
+                Modificar
+            </button>
+            </form>
+                <div class="mt-5 d-flex ">
+                    
+                    <form action="{% url 'complete_task' task.id %}" method="POST">
+                        {% csrf_token %}
+                    <button class="btn btn-secondary">
+                        Complete
+                    </button>
+                    </form>
+                    
+                    <form action="{% url 'delete_task' task.id %}" method="POST">
+                        {% csrf_token %}
+                    <button class="btn btn-danger">
+                        Delete
+                    </button>
+                    </form>
+
+                </div>
+
+{{error}}
+        </div>
+    </div>
+</main>
+
+{% endblock %}

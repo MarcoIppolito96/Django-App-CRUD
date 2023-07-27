@@ -1,0 +1,28 @@
+{% extends 'base.html' %} <!--Esto es decir que base es la pagina BASE/COMUN de todas-->
+
+{% block content %}
+<h1 class="text-center display-3 p-5">Pending Tasks</h1>
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <ul class="list-group">
+                {% for task in tasks %}
+                <a class="list-group-item" href="{% url 'task_detail' task.id %}"> <!--Asi podemos poner en JINJA una url VARIABLE, el segundo parametro task_id es el segundo parámetro que va a recibir(separado por un espacio simplemente)-->
+                    <header class="d-flex justify-content-between">
+                        {% if task.important %} <!-- No hace falta poner == True-->
+                        <h1 class="fw-bold text-success"><strong>{{task.titulo}}</strong></h1>
+                        {% else %}
+                        <h4 class="fw-bold">{{task.titulo}}</h4>
+                        {% endif %}
+                        <p>{{task.usuario}}</p>
+                    </header>
+                    <p> {{task.descripcion}}</p>
+                </a>
+                {% endfor %}
+                </ul>
+            </div>
+    </div>
+</main>
+
+{% endblock %}

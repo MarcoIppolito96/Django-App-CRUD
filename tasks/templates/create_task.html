@@ -1,0 +1,22 @@
+{% extends 'base.html' %} <!--Esto es decir que base es la pagina BASE/COMUN de todas-->
+
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <h1>Create Task</h1>
+                <form method="POST" class="card card-body">
+                    {{error}}
+                    {% csrf_token %}
+                    {{form}}
+                    <button class="btn btn-primary">
+                        Guardar
+                    </button>
+                </form>
+        </div>
+
+
+    </div>
+</main>
+{% endblock %}

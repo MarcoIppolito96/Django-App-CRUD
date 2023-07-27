@@ -1,0 +1,40 @@
+{% extends 'base.html' %} <!--Esto es decir que base es la pagina BASE/COMUN de todas-->
+{% block content %}
+
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <form method="POST" class="card card-body text-center">
+                <h1 class="text-center">Sing up</h1>
+                {{error}}
+            {% csrf_token %} <!-- token de seguridad para formularios-->
+            
+            <div class="mb-3">
+                <label for="username">Usuario</label>
+                <input type="text" name="username" id="username" 
+                class ="form-control" placeholder="Tu usuario">
+            </div>  
+
+            <div class="mb-3">
+                <label for="password1">Contraseña</label>
+                <input type="password" name="password1" id="password1"
+                class ="form-control" placeholder="Tu contraseña">
+            </div>  
+
+            <div class="mb-3">
+                <label for="password2">Confirmar Contraseña</label>
+                <input type="password" name="password2" id="password2"
+                class ="form-control" placeholder="Repetir contraseña">
+            </div> 
+
+            <button class="btn btn-primary">
+                Signup
+            </button>
+            <p>{{mensaje}}</p>
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
